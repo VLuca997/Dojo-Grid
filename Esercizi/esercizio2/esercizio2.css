@@ -1,0 +1,39 @@
+/* LAYOUT 2 */
+.container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 150px 400px 150px;
+    gap: 10px;
+
+    grid-template-areas: 
+    "header header header"
+    "left main aside"
+    "footer footer footer"
+    ;
+}
+
+
+header{
+    grid-area: header;
+    background-color: green;
+}
+main{
+    grid-area: main;
+    
+    background-color: red;
+}
+aside{
+    grid-area: aside;
+    background-color: orange;
+    height: 300px;
+}
+.left {
+    grid-area: left;
+    background-color: orange;
+    height: 300px;
+}
+footer{
+    grid-area: footer;
+
+    background-color: blue;
+}

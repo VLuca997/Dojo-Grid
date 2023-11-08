@@ -1,0 +1,357 @@
+/* RESET */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* LEZIONE 1 */
+
+/* GRID */
+.item{
+    background-color: green;
+    color: black;
+    padding: 20px;
+    font-size: 120%; 
+    border: 1px solid black;
+    border-radius: 16px;
+}
+.container{
+    display: grid;
+    /* COLUMN */
+
+    /* per indicare il sistema di misura si usa FR ( frazione) */
+    /* grid-template-columns: 100px 200px 100px;     dimensioni fisse */
+    /* grid-template-columns: 30% 40% 30%;    dimensionamento in base al genitore */
+    /* grid-template-columns: 1fr 2fr 1fr;    intende che la seconda colonna è il doppio della prima  */
+    /* grid-template-columns: repeat(3, 1fr) 2fr ;  prime 3 colonne da 1 fr e una da 2fr   */
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));   /* imposta valori minimi e massimi di dimensionamento.  */
+    
+
+    /* ROWS */
+
+    /* grid-template-rows: 100px 200px;  altezza fissa row */
+    /* grid-template-rows: repeat(3, 100px); 3 righe da 200px e le altre standard */
+    grid-auto-rows: minmax(200px, auto); /* per un altezza in base al contenuto  o con funzione minmax per stabilire le altezze*/
+    
+
+
+
+    /* GAP */
+    gap: 10px;
+}
+/* ------------------------------------------------------------------------- FINE LEZIONE 1 */
+
+
+
+/* LEZIONE 2 */
+.item2{
+    background-color: red;
+    color: black;
+    padding: 20px;
+    font-size: 120%; 
+    border: 1px solid blue;
+    border-radius: 20px;
+}
+.container2{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 150px;
+    gap: 10px;
+
+}
+.sized{
+    width: 100px;
+    height: 100px;
+}
+#quattro{
+    justify-self: end;
+}
+#otto{
+    justify-self: end;
+    align-self: center;
+}
+#dodici{
+    place-self: center center;  /* prende due parametri, allineamento orizzontale e verticale, il secondo parametro è opzionale */
+    
+}
+
+/* ------------------------------------------------------------------------- FINE LEZIONE 2 */
+
+
+/* LEZIONE 3 */
+
+.item3{
+    background-color: blueviolet;
+    color: white;
+    padding: 20px;
+    font-size: 120%; 
+    border: 1px solid green;
+    border-radius: 20px;
+}
+.container3{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 150px 400px 150px;
+    gap: 10px;
+}
+
+/* ora indicheremo che l'header si espanda dalla prima alla quarta colonna( quindi la prima, la seconda e la terza, quarta non inclusa) */
+.headers{
+    /* grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 1; */
+    
+    /* Formula abbreviata: */
+    grid-column: 1 / 4;
+    grid-row: 1 / 1;
+}
+
+.mains{
+    grid-column: 1 / 4;
+    grid-row: 2 / 2;
+}
+
+.footer-l{
+    grid-column: 1 / 3;
+    grid-row: 3 ;
+}
+.footer-r{
+    grid-column: 3;
+    grid-row: 3 ;
+}
+/* ------------------------------------------------------------------------- FINE LEZIONE 3 */
+
+
+/* LEZIONE 4 */
+
+.item4{
+    background-color: orange;
+    color: black;
+    padding: 20px;
+    font-size: 120%; 
+    border: 1px solid yellowgreen;
+    border-radius: 20px;
+}
+
+.container4{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 150px 400px 150px;
+    gap: 10px;
+
+    grid-template-areas: 
+    "header header header"
+    "main main main"
+    "footer-l4 none footer-r4"
+    ;
+}
+.container4 header{
+    grid-area: header;
+}
+.container4 main{
+    grid-area: main;
+}
+.container4 .footer-l4 {
+    grid-area: footer-l4;
+}
+.container4 .footer-r4 {
+    grid-area: footer-r4;
+}
+/* ------------------------------------------------------------------------- FINE LEZIONE 4 */
+
+/* LEZIONE 5 */
+.item5{
+    background-color: lightcoral;
+    color: black;
+    padding: 20px;
+    font-size: 120%; 
+    border: 1px solid grey;
+    border-radius: 20px;
+}
+.container5{
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-auto-rows: 100px;
+    gap: 10px;
+}
+
+.box5{ /* elemento11 */
+    grid-row: 2 / span 3;
+    grid-column: 3 / span 6;
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+}
+.blu{
+    background-color: greenyellow;
+    grid-column: 3 /span 3;
+    width: 100%;
+}
+/* ------------------------------------------------------------------------- FINE LEZIONE 5 */
+
+
+/* LEZIONE 6  */
+
+.item6{
+    background-color: blue;
+}
+header , footer{
+    padding: 20px;
+    font-size: 150%;
+    font-weight: bold;
+}
+.container6{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 150px);
+    grid-auto-rows: 150px;
+    gap: 10px;
+    max-width: 800px;
+    margin: 0 auto;
+    justify-content: center;
+}
+.container6 header, footer{
+    grid-column: 1 / -1;
+}
+.big{
+    /* height: 450px; NO */
+    /* invece di dare un altezza fissa, per evitare di essere sovrascritto dagli altri elementi, gli diamo: */
+    background-color: red;
+    text-align: center;
+    grid-row-end: span 3;
+}
+.medium{
+    background-color: orange;
+    grid-row-end: span 2;
+}
+.item6 > img{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+}
+/* ------------------------------------------------------------------------- FINE LEZIONE 6 */
+
+
+/* LEZINE 7 */
+
+.body{
+    margin: 10px;
+    background-color: cyan;
+}
+.container7{
+    display: grid;
+    grid-template-columns: repeat(6, 150px);
+    grid-template-rows: repeat(4, 150px);
+    gap:10px;
+    justify-content: center;
+
+    grid-template-areas: 
+    "a A . b . C"
+    ". D d B E c"
+    ". . . . e ."
+    "F . g . . ."
+    "f . G . H h"
+    ;
+
+
+}
+.caption{
+    background-color: blueviolet;
+    color: white;
+    position: relative;
+}
+.caption h3{
+    padding: 10px;
+    font-size: 120%;
+}
+.myborder{
+    position: absolute;
+    background: repeating-linear-gradient(
+        45deg, 
+        white,
+        white 10px,
+        gray 10px,
+        gray 20px
+        );
+}
+
+.myborder.left{
+    width: 10px;
+    height: 150px;
+    top: 0;
+    left: -10px;
+}
+.myborder.right{
+    width: 10px;
+    height: 150px;
+    top: 0;
+    right: -10px;
+}
+.myborder.top{
+    width: 150px;
+    height: 10px;
+    top: -10px;
+}
+.myborder.bottom{
+    width: 150px;
+    height: 10px;
+    bottom: -10px;
+}
+
+
+
+
+
+.pro1{
+    grid-area: a;
+}
+.cap1{
+    grid-area: A;
+}
+.pro2{
+    grid-area: b;
+}
+.cap2{
+    grid-area: B;
+}
+.pro3{
+    grid-area: c;
+}
+.cap3{
+    grid-area: C;
+}
+.pro4{
+    grid-area: d;
+}
+.cap4{
+    grid-area: D;
+}
+.pro5{
+    grid-area: e;
+}
+.cap5{
+    grid-area: E;
+}
+.pro6{
+    grid-area: f;
+}
+.cap6{
+    grid-area: F;
+}
+.pro7{
+    grid-area: g;
+}
+.cap7{
+    grid-area: G;
+}
+.pro8{
+    grid-area: h;
+}
+.cap8{
+    grid-area: H;
+}

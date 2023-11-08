@@ -1,0 +1,36 @@
+.container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 150px 400px 150px;
+    gap: 10px;
+
+    grid-template-areas: 
+    "header header header"
+    "main main aside"
+    "footer footer footer"
+    ;
+}
+
+
+.container header{
+    grid-area: header;
+    background-color: green;
+}
+.container main{
+    grid-area: main;
+
+    background-color: red;
+}
+.container aside{
+    grid-area: aside;
+    height: 300px;
+    background-color: orange;
+}
+.container footer{
+    grid-area: footer;
+
+    background-color: blue;
+}
+
+
+
